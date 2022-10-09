@@ -8,8 +8,20 @@ int main() {
   int b = 0;
 
   scanf("%d%d", &a, &b);
+  int min = 0;
 
-  // add code here
+  // code style
+  // {}
+  // ?:
+  if (a >= b) {
+    min = b;
+  } else {
+    min = a;
+  }
+
+  min = a >= b ? b : a;
+
+  printf("min{%d, %d} = %d\n", a, b, min);
 
   return 0;
 }
