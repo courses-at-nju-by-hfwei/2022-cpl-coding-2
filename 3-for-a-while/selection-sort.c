@@ -22,6 +22,27 @@ int main() {
   printf("\n");
 
   // add code below
+  for (int i = 0; i < len - 1; i++) {
+    // find the minimum value of numbers[i .. n - 1]
+    int min = numbers[i];
+    int min_index = i;
+
+    for (int j = i + 1; j < len; j++) {
+      if (numbers[j] < min) {
+        min = numbers[j];
+        min_index = j;
+      }
+    }
+
+    // swap numbers[i] and numbers[min_index]
+    int temp = numbers[i];
+    numbers[i] = numbers[min_index];
+    numbers[min_index] = temp;
+  }
+
+  for (int i = 0; i < len; i++) {
+    printf("%d ", numbers[i]);
+  }
 
   return 0;
 }
