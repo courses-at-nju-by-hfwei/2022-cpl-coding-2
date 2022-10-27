@@ -37,3 +37,9 @@ J
 3-for-a-while/palindrome.c,f/2/f29982d91abaaedce747306fa2210db36ebbb139
 M
 3-for-a-while/binary-search.c,c/4/c419af5e061910acbc7fc199869ad3a6de72b4e6
+?
+4-loops/merge.c,4/e/4e51e1bfa878cd816ecff955f6e1ded1d8405bf7
+E
+4-loops/bubble-sort.c,9/e/9ed15a6ed072f077e5801409ed485c19d1541abb
+F
+4-loops/game-of-life.c,c/8/c87c1536705fbacbfa02d96e2d38026e600ca2d9
