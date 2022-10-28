@@ -10,6 +10,16 @@
 #define SIZE 6
 
 // extended_board as a parameter
+// ----------
+// int arr[]
+// 1D array: arr[5]: address of the first element + 5 * (sizeof int)
+// 2D array: array of arrays
+// arr[1][3]: address of the first element +
+//            1 * (sizeof a row = number of elements in a row * (sizeof int)) +
+//            3 * (sizeof int)
+//0: ------
+//1: ------
+//2: ------
 void ExtendBoard(const int origin_board[][SIZE],
                  int extended_board[][SIZE + 2]);
 void PrintExtendedBoard(const int extended_board[][SIZE + 2]);
