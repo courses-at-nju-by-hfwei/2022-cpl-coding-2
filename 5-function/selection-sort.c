@@ -5,7 +5,7 @@
 
 #define LEN 20
 
-void Swap(int left, int right);
+void WrongSwap(int left, int right);
 void Print(const int arr[], int len);
 void SelectionSort(int arr[], int len);
 
@@ -54,13 +54,13 @@ void SelectionSort(int arr[], int len) {
     int tmp = arr[i];
     arr[i] = arr[min_index];
     arr[min_index] = tmp;
-    // Swap(1 = arr[1], 5 = arr[5])
-//    Swap(arr[i], arr[min_index]);
+    // WrongSwap(1 = arr[1], 5 = arr[5])
+//    WrongSwap(arr[i], arr[min_index]);
   }
 }
 
 // left = 1, right = 5
-void Swap(int left, int right) {
+void WrongSwap(int left, int right) {
   int tmp = left;
   left = right;
   right = tmp;
