@@ -2,60 +2,62 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-void Swap(int *left, int *right);
-void Print(const int *arr, int len);
-void SelectionSort(int arr[], int len);
+#define LEN 10
+
+void Swap(char **left, char **right);
+void Print(char *arr[], int len);
+void SelectionSort(char *arr[], int len);
 
 int main() {
-  int len = 0;
-  scanf("%d", &len);
+  char * musicians[10] = {
+    "Luo Dayou",
+    "Cui Jian",
+    "Dou Wei",
+    "Zhang Chu",
+    "Yao",
+    "Wan Qing",
+    "ZuoXiao",
+    "ErShou Rose",
+    "Hu Mage",
+    "Li Zhi",
+  };
 
-  // return value: (void *)
-  int *numbers = malloc(len * sizeof(*numbers));
-  // NULL: null pointer ((void *) 0)
-  if (numbers == NULL) {
-    printf("Memory allocation failed!\n");
-    return 0;
-  }
-
-  for (int i = 0; i < len; i++) {
-    scanf("%d", &numbers[i]);
-  }
-
-  Print(numbers, len);
-  SelectionSort(numbers, len);
-  Print(numbers, len);
-
-  free(numbers);
+  Print(musicians, LEN);
+  SelectionSort(musicians, LEN);
+  Print(musicians, LEN);
 }
 
-void Print(const int arr[], int len) {
+// char arr[]: char *arr
+void Print(char *arr[], int len) {
   printf("\n");
   for (int i = 0; i < len; i++) {
-    printf("%d ", arr[i]);
+    // *(arr + i)
+    printf("%s\n", arr[i]);
   }
   printf("\n");
 }
 
-void SelectionSort(int *arr, int len) {
+void SelectionSort(char *arr[], int len) {
   for (int i = 0; i < len; i++) {
     // find the minimum of numbers[i .. len - 1]
-    int min = arr[i];
+    char *min = arr[i];
     int min_index = i;
     for (int j = i + 1; j < len; j++) {
-      if (arr[j] < min) {
+      if (strcmp(min, arr[j]) > 0) {
         min = arr[j];
         min_index = j;
       }
     }
 
+    // swap arr[i] and arr[min_index]
     Swap(arr + i, arr + min_index);
   }
 }
 
-void Swap(int *left, int *right) {
-  int temp = *left;
+void Swap(char **left, char **right) {
+  char *temp = *left;
   *left = *right;
   *right = temp;
 }
