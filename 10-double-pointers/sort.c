@@ -3,8 +3,7 @@
  *
  * Created by hengxin on 12/01/22.
  *
- * A nice function pointer example on Riemann integration:
- * https://en.wikipedia.org/wiki/Function_pointer
+ * See also bsearch: https://en.cppreference.com/w/c/algorithm/bsearch
  */
 
 #include <stdio.h>
@@ -12,10 +11,7 @@
 #include <limits.h>
 #include <string.h>
 
-int CompareInts(const void *left, const void *right);
 void PrintInts(const int *integers, int len);
-
-int CompareStrs(const void *left, const void *right);
 void PrintStrs(const char *str[], int len);
 
 int main() {
@@ -24,24 +20,13 @@ int main() {
   int size_of_integers = sizeof integers / sizeof *integers;
 
   /**
+   * qsort: https://en.cppreference.com/w/c/algorithm/qsort
    * void qsort( void *ptr, size_t count, size_t size,
             int (*comp)(const void *, const void *) );
    */
-  int (*comp)(const void *, const void *) = CompareInts;
-  // you should not do this!!!
-  // printf("sizeof comp : %zu\n", sizeof comp);
-  printf("comp : %p\n", comp);
-  printf("*comp : %p\n", *comp);
-  printf("CompareInts : %p\n", CompareInts);
-  printf("&CompareInts : %p\n", &CompareInts);
+  // sort ints here
 
-  qsort(integers, size_of_integers, sizeof *integers, comp);
   PrintInts(integers, size_of_integers);
-
-  // Call functions indirectly via function pointers.
-  int a = 10;
-  int b = 20;
-  printf("%d %s %d\n", a, comp(&a, &b) > 0 ? ">" : "<=", b);
 
   // Sorting an array of strings
   const char *names[] = {
@@ -58,33 +43,9 @@ int main() {
   };
   int size_of_names = sizeof names / sizeof *names;
 
-  comp = CompareStrs;
-  qsort(names, size_of_names, sizeof *names, comp);
+  // sort musicians here
+
   PrintStrs(names, size_of_names);
-}
-
-int CompareInts(const void *left, const void *right) {
-  int int_left = *(const int *) left;
-  int int_right = *(const int *) right;
-
-  if (int_left < int_right) {
-    return -1;
-  }
-
-  if (int_left > int_right) {
-    return 1;
-  }
-
-  return 0;
-
-//   return int_left - int_right; // erroneous shortcut (fails if INT_MIN is present)
-}
-
-// actual arguments: char *const *
-int CompareStrs(const void *left, const void *right) {
-  char *const *pp1 = left;
-  char *const *pp2 = right;
-  return strcmp(*pp1, *pp2);
 }
 
 void PrintInts(const int *integers, int len) {
